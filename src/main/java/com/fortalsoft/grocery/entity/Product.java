@@ -16,6 +16,8 @@ public class Product {
 
     private String description;
 
+    private String imgPath;
+
     public UUID getId() {
         return id;
     }
@@ -30,5 +32,13 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
     }
 }
