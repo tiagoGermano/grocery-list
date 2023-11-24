@@ -2,6 +2,7 @@ package com.fortalsoft.grocery.service;
 
 import com.fortalsoft.grocery.dto.ProductDTO;
 import com.fortalsoft.grocery.entity.Product;
+import com.fortalsoft.grocery.exception.ControllerNotFoundException;
 import com.fortalsoft.grocery.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,8 +47,7 @@ public class ProductService {
     }
 
     private Product getProduct(UUID id) {
-        //TODO throw exception when not found
-        return productRepository.findById(id).orElse(null);
+        return productRepository.findById(id).orElseThrow(() -> new ControllerNotFoundException("Product not found"));
     }
 
     public void delete(UUID id){
