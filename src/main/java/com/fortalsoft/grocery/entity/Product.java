@@ -1,9 +1,7 @@
 package com.fortalsoft.grocery.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.UUID;
 
@@ -14,6 +12,45 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    private String description;
+    @Column(name = "name", nullable = false, unique = true)
+    private String name;
 
+    private String imageUrl;
+
+    @OneToOne
+    @JoinColumn(name = "department_id", referencedColumnName = "id")
+    private Department department;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }
