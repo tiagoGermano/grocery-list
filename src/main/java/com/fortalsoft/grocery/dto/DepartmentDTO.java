@@ -1,18 +1,17 @@
-package com.fortalsoft.grocery.entity;
-
-import jakarta.persistence.*;
+package com.fortalsoft.grocery.dto;
 
 import java.util.UUID;
 
-@Entity
-public class Department {
+public class DepartmentDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(name = "name", unique = true, nullable = false)
     private String name;
+
+    public DepartmentDTO(UUID id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     public UUID getId() {
         return id;
