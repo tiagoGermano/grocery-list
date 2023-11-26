@@ -3,11 +3,8 @@ package com.fortalsoft.grocery.dto;
 import java.util.UUID;
 
 public class DepartmentDTO {
-
     private UUID id;
-
     private String name;
-
     public DepartmentDTO(UUID id, String name) {
         this.id = id;
         this.name = name;

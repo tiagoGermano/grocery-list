@@ -17,9 +17,13 @@ public class Product {
 
     private String imageUrl;
 
-    @OneToOne
-    @JoinColumn(name = "department_id", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "department_id", referencedColumnName = "id", nullable = false)
     private Department department;
+
+    public Product() {
+        this.department = new Department();
+    }
 
     public UUID getId() {
         return id;

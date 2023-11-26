@@ -1,5 +1,6 @@
 package com.fortalsoft.grocery.service;
 
+import com.fortalsoft.grocery.dto.DepartmentDTO;
 import com.fortalsoft.grocery.dto.ProductDTO;
 import com.fortalsoft.grocery.entity.Product;
 import com.fortalsoft.grocery.repository.ProductRepository;
@@ -19,13 +20,15 @@ public class ProductService extends GenericService<Product, ProductDTO> {
 
     @Override
     ProductDTO mapperEntityToDTO(Product product) {
-        return new ProductDTO(product.getId(), product.getName(), product.getImageUrl());
+        return new ProductDTO(product);
     }
 
     @Override
-    void mapperDTOToEntity(Product entity, ProductDTO productDTO) {
-        entity.setName(productDTO.name());
-        entity.setImageUrl(productDTO.imageUrl());
+    void mapperDTOToEntity(Product product, ProductDTO productDTO) {
+        product.setName(productDTO.getName());
+        product.setImageUrl(productDTO.getImageUrl());
+        product.getDepartment().setId(productDTO.getDepartment().getId());
+        product.getDepartment().setName(productDTO.getDepartment().getName());
     }
 
     @Override
