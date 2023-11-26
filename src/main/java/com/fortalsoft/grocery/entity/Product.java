@@ -1,5 +1,6 @@
 package com.fortalsoft.grocery.entity;
 
+import com.fortalsoft.grocery.enums.MeasureType;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
@@ -14,6 +15,9 @@ public class Product {
 
     @Column(name = "name", nullable = false, unique = true)
     private String name;
+
+    @Column(name = "measure_type", nullable = false)
+    private MeasureType measureType;
 
     private String imageUrl;
 
@@ -48,6 +52,14 @@ public class Product {
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    public MeasureType getMeasureType() {
+        return measureType;
+    }
+
+    public void setMeasureType(MeasureType measureType) {
+        this.measureType = measureType;
     }
 
     public String getImageUrl() {

@@ -26,6 +26,7 @@ public class ProductService extends GenericService<Product, ProductDTO> {
     @Override
     void mapperDTOToEntity(Product product, ProductDTO productDTO) {
         product.setName(productDTO.getName());
+        product.setMeasureType(productDTO.getMeasureType());
         product.setImageUrl(productDTO.getImageUrl());
         product.getDepartment().setId(productDTO.getDepartment().getId());
         product.getDepartment().setName(productDTO.getDepartment().getName());
